@@ -1,0 +1,129 @@
+
+======================================================================
+TELCO CUSTOMER CHURN - EDA SUMMARY REPORT
+======================================================================
+
+Generated: 2026-03-02 19:42:17
+Analyst: Your Name
+Project: Customer Churn Prediction MLOps Pipeline
+
+======================================================================
+1. DATASET OVERVIEW
+======================================================================
+
+Total Customers: 7,043
+Churned Customers: 1,869 (26.54%)
+Non-Churned Customers: 5,174 (73.46%)
+
+Imbalance Ratio: 2.77:1
+
+Features:
+  - Numerical: 3 (tenure, MonthlyCharges, TotalCharges)
+  - Categorical: 17 (demographics, services, account info)
+  - Target: Churn (Binary: Yes/No)
+
+======================================================================
+2. DATA QUALITY
+======================================================================
+
+No duplicate rows
+No missing values (after cleaning TotalCharges)
+All customerIDs unique
+TotalCharges data type issue fixed (whitespace → 0 for new customers)
+
+======================================================================
+3. KEY FINDINGS
+======================================================================
+
+TOP CHURN RISK FACTORS:
+  1. Month-to-month contracts: 42.7% churn rate
+  2. New customers (≤1 year): 47.4% churn rate
+  3. Fiber optic internet: 41.9% churn rate
+  4. Electronic check payment: 45.3% churn rate
+  5. No tech support: 41.6% churn rate
+
+PROTECTIVE FACTORS:
+  1. Two-year contracts: 2.8% churn rate
+  2. Long tenure (>4 years): 9.5% churn rate
+  3. Has tech support: 15.2% churn rate
+
+======================================================================
+4. NUMERICAL FEATURES INSIGHTS
+======================================================================
+
+Tenure:
+  - Range: 0 to 72 months
+  - Mean: 32.37 months
+  - Churners avg: 17.98 months
+  - Non-churners avg: 37.57 months
+  - Insight: Churners have significantly shorter tenure
+
+MonthlyCharges:
+  - Range: $18.25 to $118.75
+  - Mean: $64.76
+  - Churners avg: $74.44
+  - Non-churners avg: $61.27
+  - Insight: Churners pay slightly more on average
+
+TotalCharges:
+  - Range: $0.00 to $8684.80
+  - Mean: $2279.73
+  - Insight: Highly correlated with tenure (r=0.826)
+
+======================================================================
+5. BUSINESS IMPACT
+======================================================================
+
+Current Situation:
+  - Monthly revenue loss from churn: $121,039.60
+  - Annual revenue loss: $1,452,475.24
+
+ML Model Potential (assuming 80% recall, 50% save rate):
+  - Customers saved: 748
+  - Revenue saved annually: $580,990.10
+  - ROI: Significant if retention cost < $777.14 per customer
+
+======================================================================
+6. RECOMMENDED PREPROCESSING STEPS
+======================================================================
+
+1. Handle Class Imbalance:
+   - Use stratified train-test split
+   - Set scale_pos_weight = 2.77 in XGBoost
+
+2. Numerical Features:
+   - Scale using StandardScaler (different ranges)
+   - No transformation needed (distributions reasonable)
+
+3. Categorical Features:
+   - One-hot encoding for multi-class (Contract, InternetService, etc.)
+   - Keep binary features as 0/1
+
+4. Feature Engineering:
+   - Create tenure groups
+   - Create service bundle indicators
+   - Create payment method risk flags
+
+5. Feature Selection:
+   - Keep all features initially (none are constant)
+   - Monitor multicollinearity (tenure/TotalCharges: r=0.826)
+
+======================================================================
+7. NEXT STEPS
+======================================================================
+
+EDA Complete
+Next: Build preprocessing pipeline
+Then: Train baseline model (Logistic Regression)
+Then: Train XGBoost model with hyperparameter tuning
+Then: Track experiments with MLflow
+
+Target Performance:
+  - Accuracy: >80%
+  - F1 Score: >0.65
+  - Recall: >0.75 (prioritize catching churners)
+  - AUC-ROC: >0.80
+
+======================================================================
+END OF EDA REPORT
+======================================================================

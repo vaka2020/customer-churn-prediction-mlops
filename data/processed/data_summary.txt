@@ -1,0 +1,45 @@
+
+======================================================================
+TELCO CUSTOMER CHURN - DATA SUMMARY
+======================================================================
+
+Dataset Information:
+-------------------
+- Total Customers: 7,043
+- Total Features: 21
+- Target Variable: Churn (Binary: Yes/No)
+- Churn Rate: 26.54%
+
+Feature Types:
+--------------
+- Numerical Features: 3
+  - tenure (months with company)
+  - MonthlyCharges (monthly bill amount)
+  - TotalCharges (total amount charged)
+
+- Categorical Features: 16
+  - Demographics: gender, SeniorCitizen, Partner, Dependents
+  - Services: PhoneService, MultipleLines, InternetService, etc.
+  - Account: Contract, PaymentMethod, PaperlessBilling
+
+Data Quality Issues Found:
+---------------------------
+- Missing values: None
+- Duplicates: 0 rows
+- TotalCharges: Object type (contains whitespace) - needs cleaning
+
+Key Observations:
+-----------------
+- Class imbalance: 2.77:1 ratio (need stratified split & class weights)
+- customerID is unique for all rows (good primary key)
+- All features are relevant to churn prediction (no constant columns)
+
+Next Steps:
+-----------
+1. Fix TotalCharges data type issue
+2. Handle any missing values
+3. Perform detailed EDA (distributions, correlations)
+4. Feature engineering ideas
+5. Build preprocessing pipeline
+
+======================================================================
