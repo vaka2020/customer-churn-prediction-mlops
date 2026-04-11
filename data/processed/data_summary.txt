@@ -17,7 +17,7 @@ Feature Types:
   - MonthlyCharges (monthly bill amount)
   - TotalCharges (total amount charged)
 
-- Categorical Features: 16
+- Categorical Features: 17
   - Demographics: gender, SeniorCitizen, Partner, Dependents
   - Services: PhoneService, MultipleLines, InternetService, etc.
   - Account: Contract, PaymentMethod, PaperlessBilling

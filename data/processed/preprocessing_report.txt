@@ -1,0 +1,124 @@
+
+======================================================================
+DATA PREPROCESSING REPORT
+======================================================================
+
+Generated: 2026-04-11 01:01:52
+Project: Customer Churn Prediction MLOps Pipeline
+
+======================================================================
+1. DATASET SPLIT
+======================================================================
+
+Strategy: Stratified Train-Test Split
+  - Train-Test Ratio: 80-20
+  - Random State: 42 (reproducible)
+  - Stratification: Yes (maintains class distribution)
+
+Dataset Sizes:
+  - Original: 7,043 samples
+  - Training: 5,634 samples (80.0%)
+  - Test:     1,409 samples (20.0%)
+
+Class Distribution:
+  Original:
+    - No Churn: 5,174 (73.46%)
+    - Churn:    1,869 (26.54%)
+
+  Training Set:
+    - No Churn: 4,139 (73.46%)
+    - Churn:    1,495 (26.54%)
+
+  Test Set:
+    - No Churn: 1,035 (73.46%)
+    - Churn:    374 (26.54%)
+
+Stratification successful (distributions match within 1%)
+
+======================================================================
+2. FEATURE ENGINEERING
+======================================================================
+
+Original Features: 21
+Engineered Features: 13
+Total Features: 34
+
+Categories of Engineered Features:
+  1. Tenure-based (3): is_new_customer, is_loyal_customer, tenure_group
+  2. Charges-based (2): avg_monthly_charge, high_monthly_charge
+  3. Service bundle (3): total_services, has_protection, has_support
+  4. Contract/Payment (3): is_monthly_contract, automatic_payment, risky_payment
+  5. Demographic (2): family_size, senior_with_family
+  6. Interaction (2): tenure_contract_interaction, charges_per_service
+
+======================================================================
+3. PREPROCESSING PIPELINE
+======================================================================
+
+Numerical Features (18):
+  - Transformation: StandardScaler
+  - Result: Mean ≈ 0, Std ≈ 1
+  - Fitted on: Training data only (no data leakage)
+
+Categorical Features (16):
+  - Transformation: OneHotEncoder
+  - Strategy: drop='first' (prevent multicollinearity)
+  - Unknown handling: 'ignore' (production safety)
+  - Result: 30 binary features
+
+Final Feature Count: 48
+  - Numerical: 18
+  - Categorical (one-hot): 30
+
+======================================================================
+4. QUALITY CHECKS
+======================================================================
+
+ No missing values in processed data
+ No infinite values in processed data
+ Numerical features properly scaled (mean≈0, std≈1)
+ Categorical features one-hot encoded (binary 0/1)
+ No data leakage (test stats independent of train)
+ All shapes consistent (X and y match)
+ Pipeline works in production mode
+
+======================================================================
+5. SAVED ARTIFACTS
+======================================================================
+
+Models:
+   preprocessor.pkl (4.14 KB)
+   feature_names.pkl
+   preprocessing_metadata.json
+
+Processed Data (NumPy):
+   X_train.npy ((5634, 48))
+   X_test.npy ((1409, 48))
+   y_train.npy ((5634,))
+   y_test.npy ((1409,))
+
+Raw Data (CSV):
+   X_train_raw.csv
+   X_test_raw.csv
+   y_train.csv
+   y_test.csv
+
+======================================================================
+6. NEXT STEPS
+======================================================================
+
+ Preprocessing Complete
+  Next: Train baseline model (Logistic Regression)
+  Then: Train XGBoost model
+  Then: Hyperparameter tuning with Optuna
+  Then: Model evaluation and comparison
+
+Pipeline Ready For:
+  • Model training (Day 3)
+  • Production inference (FastAPI)
+  • Automated retraining
+  • Real-time predictions
+
+======================================================================
+END OF PREPROCESSING REPORT
+======================================================================
