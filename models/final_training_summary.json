@@ -1,0 +1,76 @@
+{
+  "training_date": "2026-04-12T20:55:35.453418",
+  "models_trained": [
+    "baseline_logistic_regression",
+    "xgboost_default",
+    "xgboost_tuned"
+  ],
+  "best_model": "baseline_logistic_regression",
+  "selection_rationale": "Highest test recall (0.7995) with best generalization (0.0101 overfit gap)",
+  "optimization": {
+    "n_trials": 50,
+    "best_cv_f1": 0.6372693776953109,
+    "best_params": {
+      "n_estimators": 180,
+      "max_depth": 10,
+      "learning_rate": 0.013518532035047862,
+      "subsample": 0.6715666984413451,
+      "colsample_bytree": 0.6233669169631441,
+      "min_child_weight": 3,
+      "gamma": 2.034745248506267,
+      "reg_alpha": 0.2730579755802289,
+      "reg_lambda": 0.8333244770671087
+    }
+  },
+  "final_metrics": [
+    {
+      "Model": "Baseline (Logistic Regression)",
+      "Train_F1": 0.6336686077289571,
+      "Test_F1": 0.6235662148070907,
+      "Overfit_Gap": 0.010102392921866321,
+      "Test_Accuracy": 0.7437899219304471,
+      "Test_Precision": 0.5111111111111111,
+      "Test_Recall": 0.7994652406417112,
+      "Test_ROC_AUC": 0.8436177633108578,
+      "Test_PR_AUC": 0.6422150241771575
+    },
+    {
+      "Model": "XGBoost (Default Params)",
+      "Train_F1": 0.78587319243604,
+      "Test_F1": 0.6150392817059485,
+      "Overfit_Gap": 0.17083391073009158,
+      "Test_Accuracy": 0.7565649396735273,
+      "Test_Precision": 0.5299806576402321,
+      "Test_Recall": 0.732620320855615,
+      "Test_ROC_AUC": 0.839007724301842,
+      "Test_PR_AUC": 0.6508600977377079
+    },
+    {
+      "Model": "XGBoost (Tuned)",
+      "Train_F1": 0.7812945537496434,
+      "Test_F1": 0.6207674943566591,
+      "Overfit_Gap": 0.16052705939298428,
+      "Test_Accuracy": 0.7615330021291696,
+      "Test_Precision": 0.537109375,
+      "Test_Recall": 0.7352941176470589,
+      "Test_ROC_AUC": 0.8426967888604717,
+      "Test_PR_AUC": 0.6468838173195146
+    }
+  ],
+  "key_findings": {
+    "dataset_size": 5634,
+    "conclusion": "Logistic Regression outperformed XGBoost due to dataset size and strong regularization",
+    "xgboost_issue": "Overfitting despite tuning (16% train-test gap)",
+    "baseline_advantages": [
+      "Best recall",
+      "Best generalization",
+      "Faster inference",
+      "More interpretable"
+    ]
+  },
+  "production_recommendation": "Deploy Logistic Regression baseline model",
+  "scale_pos_weight": 2.768561872909699,
+  "feature_count": 48,
+  "train_samples": 5634,
+  "test_samples": 1409
+}

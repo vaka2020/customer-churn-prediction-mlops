@@ -1,0 +1,28 @@
+{
+  "training_date": "2026-04-12T20:43:40.175180",
+  "models_trained": [
+    "baseline_logistic_regression",
+    "xgboost_class_weighted"
+  ],
+  "best_model": "xgboost_class_weighted",
+  "baseline_metrics": {
+    "test_accuracy": 0.7437899219304471,
+    "test_precision": 0.5111111111111111,
+    "test_recall": 0.7994652406417112,
+    "test_f1": 0.6235662148070907,
+    "test_roc_auc": 0.8436177633108578,
+    "test_pr_auc": 0.6422150241771575
+  },
+  "xgboost_metrics": {
+    "test_accuracy": 0.7565649396735273,
+    "test_precision": 0.5299806576402321,
+    "test_recall": 0.732620320855615,
+    "test_f1": 0.6150392817059485,
+    "test_roc_auc": 0.839007724301842,
+    "test_pr_auc": 0.6508600977377079
+  },
+  "scale_pos_weight": 2.768561872909699,
+  "feature_count": 48,
+  "train_samples": 5634,
+  "test_samples": 1409
+}
