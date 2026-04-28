@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# MLflow
+mlruns/
+notebooks/mlruns/
+mlartifacts/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Tests
+tests/
+test_api.py
+
+# Data (we'll copy only what's needed)
+data/raw/*
+
+# Notebooks (not needed in production)
+notebooks/
+
+# CI/CD
+.github/
